@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Roue Test</title>
+
+<style>
+body {
+    margin: 0;
+    background: radial-gradient(circle, #0f172a, #020617);
+    color: white;
+    text-align: center;
+    font-family: Arial;
+}
+
+h1 {
+    margin-top: 30px;
+    color: #22c55e;
+    text-shadow: 0 0 20px #22c55e;
+}
+
+/* ROUE */
+#wheel {
+    margin: 50px auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 10px solid #22c55e;
+    position: relative;
+    transition: transform 3s ease-out;
+}
+
+/* SECTIONS */
+.section {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: #22c55e;
+    transform-origin: 100% 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+}
+
+/* BOUTON */
+button {
+    padding: 15px 30px;
+    background: #22c55e;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button:hover {
+    background: #16a34a;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎡 Roue de Test</h1>
+
+<div id="wheel"></div>
+
+<button onclick="spin()">Tourner</button>
+
+<h2 id="result"></h2>
+
+<script>
+const values = [1,1,2,2,3];
+let forcedValue = null;
+
+/* CREATION ROUE */
+function createWheel() {
+    const wheel = document.getElementById("wheel");
+    const angle = 360 / values.length;
+
+    values.forEach((val, i) => {
+        const div = document.createElement("div");
+        div.className = "section";
+        div.style.transform = `rotate(${i * angle}deg) skewY(${90 - angle}deg)`;
+        div.innerHTML = `<span style="transform: skewY(-${90 - angle}deg) rotate(${angle/2}deg); display:block;">${val}</span>`;
+        wheel.appendChild(div);
+    });
+}
+
+createWheel();
+
+/* SPIN */
+function spin() {
+    let index;
+
+    if (forcedValue !== null) {
+        // trouve un index correspondant à la valeur forcée
+        const possible = values
+            .map((v, i) => v === forcedValue ? i : -1)
+            .filter(i => i !== -1);
+
+        index = possible[Math.floor(Math.random() * possible.length)];
+        forcedValue = null; // reset
+    } else {
+        index = Math.floor(Math.random() * values.length);
+    }
+
+    const angle = 360 * 5 + (index * (360 / values.length));
+
+    document.getElementById("wheel").style.transform = `rotate(-${angle}deg)`;
+
+    setTimeout(() => {
+        document.getElementById("result").innerText = "Résultat : " + values[index];
+    }, 3000);
+}
+
+/* CONTROLES CLAVIER */
+document.addEventListener("keydown", (e) => {
+    if (e.key === "&") {
+        forcedValue = 1;
+        console.log("Forcé : 1");
+    }
+    if (e.key === "é") {
+        forcedValue = 2;
+        console.log("Forcé : 2");
+    }
+    if (e.key === '"') {
+        forcedValue = 3;
+        console.log("Forcé : 3");
+    }
+});
+</script>
+
+</body>
+</html>
